@@ -1,0 +1,38 @@
+{%extends 'base.html' %}
+
+{%block head%}
+
+{% endblock %}
+
+{%block body%}
+<div class="studentable">
+    <h1>STUDENT SCHEMA</h1>
+    <table border="5px">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>TEACHER NAME</th>
+            <th>ACTIONS</th>
+        </tr>
+        {% for t in tasks %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.teacher}}</td>
+            <td>
+                <a href="/update/{{ t.id }}">Update</a>
+                <br>
+                <a href="/delete/{{t.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+<form action="/sdata/" method="POST">
+    <input type="text" name="sname" id="sname" placeholder="Student Name">
+    <input type="text" name="tname" id="tname" placeholder="Teacher Name">
+    <input type="submit" value="submit">
+</form>
+</div>
+{% endblock %}
