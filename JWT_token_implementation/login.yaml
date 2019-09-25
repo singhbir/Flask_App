@@ -1,0 +1,103 @@
+swagger: "2.0"
+info:
+  description: swagger
+  version: "1.0.0"
+  title: Swagger
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+paths:
+  /:
+    post:
+      operationId: myapp.login
+      parameters:
+        - name : name
+          in: formData
+          type: string
+        - name : email
+          in: formData
+          type: string
+          pattern: '^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
+        - name : password
+          in: formData
+          type: string
+
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: PAGE NOT FOUND,PLEASE CHECK URL
+    get:
+      operationId: myapp.test_1
+      responses:
+        '200':
+          description: OK
+
+  /mlogin:
+    post:
+      operationId: myapp.mlogin
+      parameters:
+        - name: lemail
+          in: formData
+          type: string
+          pattern: '^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
+        - name: lpassword
+          in: formData
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: PAGE NOT FOUND,PLEASE CHECK URL
+
+  /sdata:
+    post:
+      operationId: myapp.hello_world
+      parameters:
+        - name: sname
+          in: formData
+          type: string
+        - name: tname
+          in: formData
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: PAGE NOT FOUND,PLEASE CHECK URL
+
+  /delete/{id}:
+    delete:
+      operationId: myapp.deletentry
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: PAGE NOT FOUND,PLEASE CHECK URL
+
+  /update/{id}:
+    post:
+      operationId: myapp.updatentry
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: sname
+          in: formData
+          type: string
+        - name: tname
+          in: formData
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: PAGE NOT FOUND,PLEASE CHECK URL

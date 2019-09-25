@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+
+{%block head%}
+
+{% endblock %}
+
+{%block body%}
+<h1>
+LOGIN/SIGNUP
+</h1>
+    <form action="/mainlogin" method="POST">
+    <input type="email" name="lemail" id="lemail" placeholder="Email Address">
+    <input type="password" name="lpassword" id="lpassword" placeholder="Password">
+    <input type="submit" value="Login">
+
+    </form>
+{% endblock %}
